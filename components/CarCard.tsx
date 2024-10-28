@@ -91,7 +91,7 @@ const carRent = calculateCarRent(city_mpg, year) ;
         </div>
       </div>
 
-      <CarDetails isOpen={isOpen} closeModel={
+      <CarDetails isOpen={isOpen} closeModal={
         () => setIsOpen(false)} car={car}
         />
     </div>
