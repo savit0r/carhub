@@ -2,6 +2,7 @@ import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
 import { fuels, manufacturers, yearsOfProduction } from "@/constants";
 import { fetchCars } from "@/utils";
 import Image from "next/image";
+import { ShowMore } from "@/components";
 
 export default async function Home({searchParams}: HomeProps) {
   const allCars = await fetchCars({
@@ -44,6 +45,10 @@ export default async function Home({searchParams}: HomeProps) {
               )
               )}
             </div>
+
+            < ShowMore
+            
+            />
       
           </section>
         ): (
@@ -53,6 +58,7 @@ export default async function Home({searchParams}: HomeProps) {
             <p>{allCars?.message}</p>
           </div>
         )}
+
 
       </div>
     </main>
