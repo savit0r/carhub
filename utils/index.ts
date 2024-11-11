@@ -50,16 +50,29 @@ string) => {
     return `${url}` ;
 }
 
-export const updateSeatrchParams = (type:string, value:string) =>
+export const updateSearchParams = (type:string, value:string) =>
 {
     const searchParams = new URLSearchParams(window.
     location.search);
         
-    searchParams.set(type, value)
+    searchParams.set(type, value);
         
     const newPathname = `${window.location.pathname}?
-    ${searchParams.toString()}`
+    ${searchParams.toString()}`;
 
     return newPathname;
     
 }
+
+export const deleteSearchParams = (type: string) => {
+    // Set the specified search parameter to the given value
+    const newSearchParams = new URLSearchParams(window.location.search);
+  
+    // Delete the specified search parameter
+    newSearchParams.delete(type.toLocaleLowerCase());
+  
+    // Construct the updated URL pathname with the deleted search parameter
+    const newPathname = `${window.location.pathname}?${newSearchParams.toString()}`;
+  
+    return newPathname;
+  };

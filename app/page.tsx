@@ -1,8 +1,8 @@
-import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
-import { fuels, manufacturers, yearsOfProduction } from "@/constants";
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
+import { fuels, yearsOfProduction } from "@/constants";
 import { fetchCars } from "@/utils";
-import Image from "next/image";
-import { ShowMore } from "@/components";
+import { HomeProps } from "@/types";
+
 
 export default async function Home({searchParams}: HomeProps) {
   const allCars = await fetchCars({
@@ -17,7 +17,7 @@ export default async function Home({searchParams}: HomeProps) {
     < 1 || !allCars ;
 
   return (
-    <main>
+    <main className="overflow-hidden">
       <Hero/>
 
       <div className="mt-12 padding-x padding-y 
@@ -46,8 +46,10 @@ export default async function Home({searchParams}: HomeProps) {
               )}
             </div>
 
-            < ShowMore
-            
+            <ShowMore
+            pageNumber={(searchParams.limit || 10) / 10}
+            isNext={(searchParams.limit || 10) < allCars.length}
+          
             />
       
           </section>
